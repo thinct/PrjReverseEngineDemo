@@ -1,0 +1,8 @@
+.vs
+*.tlog
+*.recipe
+*.iobj
+*.log
+*.ipdb
+*.FileListAbsolute.txt
+*.obj
