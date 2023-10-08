@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>16.0</VCProjectVersion>
+    <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{4ff4c4bf-685a-4815-bff1-e05406f588f0}</ProjectGuid>
-    <RootNamespace>PrjReverseEngineering</RootNamespace>
+    <ProjectGuid>{b468f633-d7ee-4e23-b886-3e27d1470902}</ProjectGuid>
+    <RootNamespace>ReverseSnakeGame</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -33,7 +33,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -88,14 +88,20 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>E:\SFML\32bit\SFML-2.5.1\include;E:\CodeProjects\HookTemplate\HookTemplate;E:\CodeProjects\HookTemplate\HookTemplate\Eng_Hooker</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <FixedBaseAddress>true</FixedBaseAddress>
+      <AdditionalLibraryDirectories>E:\SFML\32bit\SFML-2.5.1\lib;E:\CodeProjects\HookTemplate\HookTemplate\Eng_Hooker</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-audio.lib;sfml-graphics.lib;sfml-system.lib;sfml-window.lib;sfml-network.lib;MinHook.x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -127,7 +133,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BackgroundGrid.cpp" />
+    <ClCompile Include="Direction.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="SnakeGame.cpp" />
+    <ClCompile Include="SnakeGameApp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="C:\Users\Administrator\Desktop\SnakeGame1002\ReleaseExercise\karmaticArcade.ttf" />
+    <Font Include="C:\Users\Administrator\Desktop\SnakeGame1002\ReleaseExercise\pixelFont7.ttf" />
+    <Font Include="C:\Users\Administrator\Desktop\SnakeGame1002\ReleaseExercise\SFPixelate-Bold.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\HookTemplate\HookTemplate\InjectHooker.hpp" />
+    <ClInclude Include="BackgroundGrid.hpp" />
+    <ClInclude Include="Direction.hpp" />
+    <ClInclude Include="GameOver.hpp" />
+    <ClInclude Include="GameState.hpp" />
+    <ClInclude Include="HookEntry.hpp" />
+    <ClInclude Include="MainMenu.hpp" />
+    <ClInclude Include="Snake.hpp" />
+    <ClInclude Include="SnakeGame.hpp" />
+    <ClInclude Include="SnakeGameApp.hpp" />
+    <ClInclude Include="VectorUtil.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
