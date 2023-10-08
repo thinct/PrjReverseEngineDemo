@@ -1,4 +1,4 @@
-#include "SnakeGame.hpp"
+﻿#include "SnakeGame.hpp"
 #include "Direction.hpp"
 #include "VectorUtil.hpp"
 #include "GameOver.hpp"
@@ -91,7 +91,13 @@ void SnakeGame::update(const sf::Time& deltaTime)
 		}
 		else
 		{
-			snake_.moveForward();
+			__asm {
+				mov     ecx, [ebp - 2Ch]
+				add     ecx, 30h; '0'; this
+				mov     eax, 0x00406300
+				call    eax; 源程序的snake_.moveForward();
+			}
+			//snake_.moveForward();
 		}
 	}
 }
